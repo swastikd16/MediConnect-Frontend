@@ -1,0 +1,93 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0px;
+    background-color: #f5f8fc;
+  }
+  
+  header {
+    background-color: #3498db;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  nav a {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    margin: 0 10px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  nav a:hover {
+    background-color: #3498db;
+    color: white;
+  }
+  
+  main {
+    padding: 40px 20px;
+  }
+  
+  .about-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+  
+  .about-section img {
+    max-width: 400px;
+    margin: 40px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .about-section-content h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #3498db;
+  }
+  
+  .about-section-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+  }
+  
+  .about-section-content a {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .about-section-content a:hover {
+    background-color: #2980b9;
+  }
+  
+  footer {
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  footer p {
+    font-size: 14px;
+  }
+  

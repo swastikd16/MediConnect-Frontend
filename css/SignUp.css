@@ -63,7 +63,7 @@ body {
 .user-type-container {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 16px; /* Increased font size for better alignment */
 }
 
@@ -71,6 +71,7 @@ body {
     width: 20px; /* Increased width */
     height: 20px; /* Increased height */
     margin-right: 10px; /* Adds space between checkbox and label */
+    margin-top: 16px;
 }
 
 .signup-form p {

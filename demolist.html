@@ -1,0 +1,315 @@
+<html lang="en"><head><script type="text/javascript" src="/___vscode_livepreview_injected_script"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine List</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/ShopList.css">
+</head>
+
+<body cz-shortcut-listen="true">
+
+<!-- Header -->
+<header>
+    <h1>MediConnect</h1>
+</header>
+
+<nav class="nav-dark">
+    <a href="#">Home</a>
+    <a href="#features">Features</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<div class="list-and-form">
+    <!-- Medicine List on Left -->
+    <div class="medicine-list-container">
+        <h2 class="medicine-list-heading text-center mb-4">Medicine List</h2>
+        <div class="table-header">
+            <div class="serial-number"><strong>#</strong></div>
+            <div class="name"><strong>Name</strong></div>
+            <div class="brand"><strong>Brand</strong></div>
+            <div class="price"><strong>Price (₹)</strong></div>
+            <div class="quantity"><strong>Quantity</strong></div>
+            <div><strong>Actions</strong></div>
+        </div>
+        <ul id="medicine-list" class="medicine-list"><li class="medicine-item">
+            <div class="serial-number">1</div>
+            <div class="name">Paracetamol 500mg</div>
+            <div class="brand">Crocin</div>
+            <div class="quantity">100</div>
+            <div class="price">20.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(0)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(0)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">2</div>
+            <div class="name">Ibuprofen 400mg</div>
+            <div class="brand">Brufen</div>
+            <div class="quantity">100</div>
+            <div class="price">25.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(1)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(1)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">3</div>
+            <div class="name">Amoxicillin 500mg</div>
+            <div class="brand">Amoxil</div>
+            <div class="quantity">100</div>
+            <div class="price">60.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(2)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(2)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">4</div>
+            <div class="name">Metformin 500mg</div>
+            <div class="brand">Glyciphage</div>
+            <div class="quantity">100</div>
+            <div class="price">30.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(3)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(3)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">5</div>
+            <div class="name">Atorvastatin 10mg</div>
+            <div class="brand">Lipitor</div>
+            <div class="quantity">100</div>
+            <div class="price">90.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(4)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(4)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">6</div>
+            <div class="name">Lisinopril 10mg</div>
+            <div class="brand">Hipril</div>
+            <div class="quantity">100</div>
+            <div class="price">50.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(5)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(5)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">7</div>
+            <div class="name">Omeprazole 20mg</div>
+            <div class="brand">Omez</div>
+            <div class="quantity">100</div>
+            <div class="price">30.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(6)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(6)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">8</div>
+            <div class="name">Azithromycin 500mg</div>
+            <div class="brand">Azithral</div>
+            <div class="quantity">100</div>
+            <div class="price">70.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(7)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(7)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">9</div>
+            <div class="name">Levothyroxine 50mcg</div>
+            <div class="brand">Thyronorm</div>
+            <div class="quantity">100</div>
+            <div class="price">40.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(8)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(8)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">10</div>
+            <div class="name">Diclofenac 50mg</div>
+            <div class="brand">Voveran</div>
+            <div class="quantity">100</div>
+            <div class="price">15.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(9)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(9)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">11</div>
+            <div class="name">Losartan 50mg</div>
+            <div class="brand">Losar</div>
+            <div class="quantity">100</div>
+            <div class="price">45.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(10)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(10)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">12</div>
+            <div class="name">Sertraline 50mg</div>
+            <div class="brand">Serlift</div>
+            <div class="quantity">100</div>
+            <div class="price">100.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(11)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(11)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">13</div>
+            <div class="name">Montelukast 10mg</div>
+            <div class="brand">Montair</div>
+            <div class="quantity">100</div>
+            <div class="price">70.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(12)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(12)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">14</div>
+            <div class="name">Alprazolam 0.5mg</div>
+            <div class="brand">Alprax</div>
+            <div class="quantity">100</div>
+            <div class="price">15.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(13)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(13)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">15</div>
+            <div class="name">Ranitidine 150mg</div>
+            <div class="brand">Zinetac</div>
+            <div class="quantity">100</div>
+            <div class="price">10.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(14)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(14)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">16</div>
+            <div class="name">Amlodipine 5mg</div>
+            <div class="brand">Amlong</div>
+            <div class="quantity">100</div>
+            <div class="price">25.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(15)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(15)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">17</div>
+            <div class="name">Doxycycline 100mg</div>
+            <div class="brand">Doxicap</div>
+            <div class="quantity">100</div>
+            <div class="price">60.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(16)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(16)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">18</div>
+            <div class="name">Tramadol 50mg</div>
+            <div class="brand">Ultram</div>
+            <div class="quantity">100</div>
+            <div class="price">80.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(17)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(17)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">19</div>
+            <div class="name">Cetirizine 10mg</div>
+            <div class="brand">Cetzine</div>
+            <div class="quantity">100</div>
+            <div class="price">15.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(18)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(18)"></i>
+            </div>
+        </li><li class="medicine-item">
+            <div class="serial-number">20</div>
+            <div class="name">Furosemide 40mg</div>
+            <div class="brand">Lasix</div>
+            <div class="quantity">100</div>
+            <div class="price">12.00</div>
+            <div class="actions">
+                <i class="fas fa-edit action-icon" onclick="openEditModal(19)"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(19)"></i>
+            </div>
+        </li></ul>
+        <div class="loader" id="loader">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form on Right -->
+    <div class="form-container">
+        <h2 class="manage-medicine-heading text-center mb-4">Manage Medicine Stock</h2>
+        <div class="d-grid gap-2">
+            <button type="button" class="btn add-medicine-btn" id="add-medicine-btn">Add Medicine</button>
+        </div>
+    </div>
+</div>
+
+<!-- Add Medicine Modal -->
+<div class="modal fade" id="addMedicineModal" tabindex="-1" aria-labelledby="addMedicineModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addMedicineModalLabel">Add Medicine</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="medicineForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" required="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="brand" class="form-label">Brand</label>
+                        <input type="text" class="form-control" id="brand" required="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="form-label">Price (₹)</label>
+                        <input type="number" class="form-control" id="price" required="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="number" class="form-control" id="quantity" required="">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="submit-medicine-btn">Add Medicine</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Quantity Modal -->
+<div class="modal fade" id="editQuantityModal" tabindex="-1" aria-labelledby="editQuantityModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editQuantityModalLabel">Edit Quantity</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="edit-quantity" class="form-label">Quantity</label>
+                    <input type="number" class="form-control" id="edit-quantity" required="">
+                </div>
+                <button type="button" class="btn btn-primary" id="update-quantity-btn">Update Quantity</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/ShopList.js"></script>
+
+<!-- Footer -->
+<footer>
+    <p>© 2024 MediConnect. All rights reserved.</p>
+</footer>
+
+
+</body></html>

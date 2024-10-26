@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <!-- <base href="https://mediconnect.com/signup"> -->
     <title>MediConnect - Sign Up</title>
@@ -11,15 +12,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/SignUp.css">
 </head>
+
 <body>
     <div class="signup-container">
         <h1>MediConnect</h1>
-        <form class="signup-form">
-            <input type="text" placeholder="Name" required>
-            <input type="tel" placeholder="Phone" required>
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
-            
+        <div class="signup-form">
+
+            <input id="email" type="email" placeholder="Email" required>
+            <input id="password" type="password" placeholder="Password" required>
+            <button id="submitbtn">Sign Up</button>
             <div class="user-type-container">
                 <input type="checkbox" id="user-type" name="user-type" value="owner">
                 <label for="user-type">I am an Owner</label>
@@ -33,11 +34,8 @@
             <button type="submit">Sign Up</button>
             
             <p>Already have an account? <a href="#">Log in</a></p>
-        </form>
+        </div>
     </div>
-
-    <!-- Link to the external JavaScript file -->
-    <script src="js/SignUp.js"></script>
-
 </body>
+
 </html>

@@ -13,12 +13,15 @@ header {
 }
 
 .nav-dark {
-    background-color: #003366; /* Dark blue color */
-    padding: 4px 0; /* Optional: add padding for spacing */
+    background-color: #003366;
+    /* Dark blue color */
+    padding: 4px 0;
+    /* Optional: add padding for spacing */
 }
 
 .nav-dark a {
-    color: white; /* Keep link color white for contrast */
+    color: white;
+    /* Keep link color white for contrast */
 }
 
 nav {
@@ -60,7 +63,7 @@ nav a:hover {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 600px;
+    min-height: 600px;
 }
 
 .form-container {
@@ -81,8 +84,10 @@ nav a:hover {
 
 /* Prevent overflow in the Medicine List and enable scrolling */
 .medicine-list {
-    max-height: 400px; /* Set a fixed height to contain the list */
-    overflow-y: auto;  /* Enable scrolling if content exceeds max height */
+    max-height: 400px;
+    /* Set a fixed height to contain the list */
+    overflow-y: auto;
+    /* Enable scrolling if content exceeds max height */
 }
 
 .medicine-item {
@@ -91,12 +96,14 @@ nav a:hover {
     align-items: center;
     padding: 15px;
     border-bottom: 1px solid #dee2e6;
-    transition: box-shadow 0.3s; /* Ensure smooth transition for the glow effect */
+    transition: box-shadow 0.3s;
+    /* Ensure smooth transition for the glow effect */
 }
 
 /* Glow effect when the item is clicked */
 .medicine-item.clicked {
-    box-shadow: 0 0 20px rgba(0, 204, 255, 0.7); /* Adjust color and intensity as needed */
+    box-shadow: 0 0 20px rgba(0, 204, 255, 0.7);
+    /* Adjust color and intensity as needed */
 }
 
 
@@ -172,7 +179,8 @@ footer {
     text-align: center;
     padding: 10px;
     margin-top: auto;
-    position: relative; /* Optional: to prevent footer from overlapping content */
+    position: relative;
+    /* Optional: to prevent footer from overlapping content */
 }
 
 footer p {

@@ -3,9 +3,9 @@ function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    resolve({ latitude, longitude });
+                    const lat = position.coords.latitude;
+                    const long = position.coords.longitude;
+                    resolve({ lat, long });
                 },
                 (error) => {
                     alert("Error obtaining location");
@@ -39,9 +39,22 @@ async function getShops() {
     return result.shops;
 }
 
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Radius of the Earth in kilometers
+    const dLat = (lat2 - lat1) * Math.PI / 180;
+    const dLon = (lon2 - lon1) * Math.PI / 180;
+    const a =
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const distance = R * c; // Distance in kilometers
+    return distance.toFixed(2);
+}
+
 async function main() {
     const location = await getLocation();
-    const map = L.map('map').setView([location.latitude, location.longitude], 15);
+    const map = L.map('map').setView([location.lat, location.long], 15);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
         maxZoom: 19,
@@ -56,9 +69,10 @@ async function main() {
 
     shopList.forEach((shop) => {
         const marker = L.marker([shop.location.lat, shop.location.long]).addTo(map)
-        marker.bindPopup(`<b>${shop.name}</b>`).openPopup();
+        const distance = calculateDistance(location.lat, location.long, shop.location.lat, shop.location.long);
+        marker.bindPopup(`<b>${shop.name}</b><br>Distance: ${distance} km`).openPopup();
 
-        marker.on('click', function() {
+        marker.on('click', function () {
             map.flyTo(marker.getLatLng(), 15, { animate: true, duration: 1 }); // Fly to the marker position with a specific zoom level and duration
             marker.openPopup(); // Open the popup (optional)
         });
@@ -69,6 +83,12 @@ async function main() {
         markerColor: 'red'
     });
 
-    L.marker([location.latitude, location.longitude], { icon: redMarker }).addTo(map).bindPopup('You are here').openPopup();
+    const marker = L.marker([location.lat, location.long], { icon: redMarker })
+    marker.addTo(map).bindPopup('You are here').openPopup();
+    marker.on('click', function () {
+        map.flyTo(marker.getLatLng(), 15, { animate: true, duration: 1 }); // Fly to the marker position with a specific zoom level and duration
+        marker.openPopup(); // Open the popup (optional)
+
+    });
 }
 main();

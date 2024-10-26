@@ -18,14 +18,12 @@ async function getMedicineList() {
     if (response.ok) {
         if (result.status == true) {
             return result.medicine;
-        }
-        else {
+        } else {
             alert(`Failed to get data: ${result.message}`);
         }
     } else {
         alert(`Failed to get data: ${result.message}`);
     }
-
 }
 
 let editIndex = -1;
@@ -44,8 +42,10 @@ function updateMedicineList() {
             <div class="serial-number">${index + 1}</div>
             <div class="name">${medicine.name}</div>
             <div class="brand">${medicine.brand}</div>
-            <div class="quantity">${medicine.quantity}</div>
-            <div class="price">${medicine.price}</div>
+            <div class="price">${medicine.price}</div> <!-- Stock Price -->
+            <div class="retail-price">${medicine.retail_price}</div> <!-- Retail Price -->
+            <div class="quantity">${medicine.quantity}</div> <!-- Quantity -->
+            <div class="units-sold">${medicine.units_sold}</div> <!-- Units Sold -->
             <div class="actions">
                 <i class="fas fa-edit action-icon" onclick="openEditModal(${index})"></i>
                 <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(${index})"></i>
@@ -59,17 +59,12 @@ function updateMedicineList() {
 
 // Assuming you have already populated the medicine list
 document.addEventListener('DOMContentLoaded', () => {
-
     getMedicineList().then(m => {
         medicineList = m
         console.log(medicineList);
         updateMedicineList(medicineList);
-
     });
 });
-
-
-
 
 // Function to add a new medicine
 document.getElementById('add-medicine-btn').addEventListener('click', () => {
@@ -86,11 +81,12 @@ async function addMedicine(m) {
         "request_type": "add_med",
         "email": localStorage.getItem('email'),
         "Med_data": {
-            "id": generateRandomNumber(),
             "name": m[0],
             "brand": m[1],
-            "price": m[2],
-            "quantity": m[3],
+            "price": m[2],  // Stock Price
+            "retail_price": m[3], // Retail Price
+            "quantity": m[4], // Quantity
+            "units_sold": document.getElementById('units-sold').value // Get Units Sold
         },
     };
 
@@ -103,24 +99,35 @@ async function addMedicine(m) {
     });
 
     const result = await response.json();
-    console.log(result);
+    console.log(result); // Handle response from backend
 
-};
+    if (response.ok) {
+        if (result.status == true) {
+            medicineList.push(data.Med_data);
+            updateMedicineList();
+            alert('Medicine added successfully');
+        } else {
+            alert(`Failed to add medicine: ${result.message}`);
+        }
+    } else {
+        alert(`Failed to add medicine: ${result.message}`);
+    }
+}
 
-// Function to submit the medicine form
 document.getElementById('submit-medicine-btn').addEventListener('click', () => {
     const name = document.getElementById('name').value;
     const brand = document.getElementById('brand').value;
+    const stockPrice = document.getElementById('stock-price').value;
+    const retailPrice = document.getElementById('retail-price').value; // Get Retail Price
     const quantity = document.getElementById('quantity').value;
-    const price = document.getElementById('price').value;
 
-    if (name && brand && price && quantity) {
-        const newMedicine = { name, brand, quantity: parseInt(quantity), price: parseFloat(price) };
-        medicineList.push(newMedicine);
-        updateMedicineList();
-        const modal = bootstrap.Modal.getInstance(document.getElementById('addMedicineModal'));
-        modal.hide();
+    const medicineData = [name, brand, stockPrice, retailPrice, quantity];
+    addMedicine(medicineData);
 
-        addMedicine([name, brand, quantity, price]);
-    }
+    // Reset form fields
+    document.getElementById('medicineForm').reset();
+
+    // Hide modal
+    const modal = bootstrap.Modal.getInstance(document.getElementById('addMedicineModal'));
+    modal.hide();
 });

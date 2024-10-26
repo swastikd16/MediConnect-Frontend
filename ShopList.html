@@ -13,105 +13,118 @@
 
 <body>
 
-<!-- Header -->
-<header>
-    <h1>MediConnect</h1>
-</header>
+    <!-- Header -->
+    <header>
+        <h1>MediConnect</h1>
+    </header>
 
-<nav class="nav-dark">
-    <a href="#">Home</a>
-    <!-- <a href="#features">Features</a> -->
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-</nav>
+    <nav class="nav-dark">
+        <a href="#">Home</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
 
-<div class="list-and-form">
-    <!-- Medicine List on Left -->
-    <div class="medicine-list-container">
-        <h2 class="medicine-list-heading text-center mb-4">Medicine List</h2>
-        <div class="table-header">
-            <div class="serial-number"><strong>#</strong></div>
-            <div class="name"><strong>Name</strong></div>
-            <div class="brand"><strong>Brand</strong></div>
-            <div class="price"><strong>Price (₹)</strong></div>
-            <div class="quantity"><strong>Quantity</strong></div>
-            <div><strong>Actions</strong></div>
-        </div>
-        <ul id="medicine-list" class="medicine-list"></ul>
-        <div class="loader" id="loader">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
+    <div class="list-and-form">
+        <!-- Medicine List on Left -->
+        <div class="medicine-list-container">
+            <h2 class="medicine-list-heading text-center mb-4">Medicine List</h2>
+            <div class="table-header">
+                <div class="serial-number"><strong>#</strong></div>
+                <div class="name"><strong>Name</strong></div>
+                <div class="brand"><strong>Brand</strong></div>
+                <div class="price"><strong>Stock Price (₹)</strong></div> <!-- Changed Price to Stock Price -->
+                <div class="retail-price"><strong>Retail Price</strong></div> <!-- Renamed Retail Price -->
+                <div class="quantity"><strong>Quantity</strong></div> <!-- Renamed Quantity/Units Sold to Quantity -->
+                <div class="units-sold"><strong>Units Sold</strong></div> <!-- New column for Units Sold -->
+                <div><strong>Actions</strong></div>
             </div>
-        </div>
-    </div>
-
-    <!-- Form on Right -->
-    <div class="form-container">
-        <h2 class="manage-medicine-heading text-center mb-4">Manage Medicine Stock</h2>
-        <div class="d-grid gap-2">
-            <button type="button" class="btn add-medicine-btn" id="add-medicine-btn">Add Medicine</button>
-        </div>
-    </div>
-</div>
-
-<!-- Add Medicine Modal -->
-<div class="modal fade" id="addMedicineModal" tabindex="-1" aria-labelledby="addMedicineModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="addMedicineModalLabel">Add Medicine</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="medicineForm">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="brand" class="form-label">Brand</label>
-                        <input type="text" class="form-control" id="brand" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="price" class="form-label">Price (₹)</label>
-                        <input type="number" class="form-control" id="price" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="quantity" class="form-label">Quantity</label>
-                        <input type="number" class="form-control" id="quantity" required>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="submit-medicine-btn">Add Medicine</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Edit Quantity Modal -->
-<div class="modal fade" id="editQuantityModal" tabindex="-1" aria-labelledby="editQuantityModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editQuantityModalLabel">Edit Quantity</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="edit-quantity" class="form-label">Quantity</label>
-                    <input type="number" class="form-control" id="edit-quantity" required>
+            <ul id="medicine-list" class="medicine-list"></ul>
+            <div class="loader" id="loader">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-                <button type="button" class="btn btn-primary" id="update-quantity-btn">Update Quantity</button>
+            </div>
+        </div>
+
+        <!-- Form on Right -->
+        <div class="form-container">
+            <h2 class="manage-medicine-heading text-center mb-4">Manage Medicine Stock</h2>
+            <div class="d-grid gap-2">
+                <button type="button" class="btn add-medicine-btn" id="add-medicine-btn">Add Medicine</button>
             </div>
         </div>
     </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/ShopList.js"></script>
+    <!-- Add Medicine Modal -->
+    <div class="modal fade" id="addMedicineModal" tabindex="-1" aria-labelledby="addMedicineModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMedicineModalLabel">Add Medicine</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="medicineForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="brand" class="form-label">Brand</label>
+                            <input type="text" class="form-control" id="brand" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="stock-price" class="form-label">Stock Price (₹)</label>
+                            <!-- Changed Price to Stock Price -->
+                            <input type="number" class="form-control" id="stock-price" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="retail-price" class="form-label">Retail Price</label>
+                            <!-- Renamed Retail Price -->
+                            <input type="number" class="form-control" id="retail-price" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <!-- Renamed Quantity/Units Sold to Quantity -->
+                            <input type="number" class="form-control" id="quantity" required>
+                        </div>
 
-<!-- Footer -->
-<footer>
-    <p>&copy; 2024 MediConnect. All rights reserved.</p>
-</footer>
+                        <button type="button" class="btn btn-primary" id="submit-medicine-btn">Add Medicine</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Quantity Modal -->
+    <div class="modal fade" id="editQuantityModal" tabindex="-1" aria-labelledby="editQuantityModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editQuantityModalLabel">Edit Quantity</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="edit-quantity" class="form-label">Quantity</label>
+                        <!-- Renamed Quantity/Units Sold to Quantity -->
+                        <input type="number" class="form-control" id="edit-quantity" required>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="update-quantity-btn">Update Quantity</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/ShopList.js"></script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 MediConnect. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>

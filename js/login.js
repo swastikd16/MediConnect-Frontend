@@ -1,18 +1,20 @@
-document.getElementById('signupForm').addEventListener('submit', async function (event) {
-    event.preventDefault();  // Prevents the default form submission behavior
+document.addEventListener('DOMContentLoaded', function () {
 
-    // Collecting form data
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    document.getElementById('submitbtn').addEventListener('click', async function () {
 
-    // Data to be sent to the backend
-    const data = {
-        request_type: 'check_auth',
-        email: email,
-        password: password,
-    };
+        // Collecting form data
+        console.log('submitbtn clicked');
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
 
-    try {
+        // Data to be sent to the backend
+        const data = {
+            request_type: 'check_auth',
+            email: email,
+            password: password,
+
+        };
+
         // Sending POST request to backend
         const response = await fetch('http://127.0.0.1:8000/api/auth', {
             method: 'POST',
@@ -28,12 +30,10 @@ document.getElementById('signupForm').addEventListener('submit', async function 
         if (response.ok) {
             if (result.status == true) {
                 alert('Login successful!');
-
-                // localStorage.setItem('email', email);
-                // localStorage.setItem('password', password);
+                localStorage.setItem('email', email);
 
                 // Redirect to profile page
-                window.location.href = '#';
+                window.location.href = 'ShopList.html';
             }
             else {
                 alert(`Login failed: ${result.message}`);
@@ -42,8 +42,5 @@ document.getElementById('signupForm').addEventListener('submit', async function 
             alert(`Sign-up failed: ${result.message}`);
         }
 
-    } catch (error) {
-        console.error('Error:', error);
-        alert('An error occurred while submitting the form.');
-    }
-});
+    });
+})

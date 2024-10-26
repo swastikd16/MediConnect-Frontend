@@ -20,13 +20,13 @@
 
             <input type="text" placeholder="Name" required>
             <input type="tel" placeholder="Phone" required> <!-- New Phone input -->
-            <input type="email" placeholder="Email" required>
-            <input type="password" placeholder="Password" required>
+            <input id="email" type="email" placeholder="Email" required>
+            <input id="password" type="password" placeholder="Password" required>
             
             
             <div class="user-type-container">
                 <input type="checkbox" id="user-type" name="user-type" value="owner">
-                <label for="user-type">I am an Owner</label>
+                <label for="user-type">Are you Shop Owner ?</label>
             </div>
 
             <!-- Hidden Shop Name -->
@@ -34,7 +34,7 @@
                 <input type="text" placeholder="Shop Name" required>
             </div>
 
-            <button type="submit">Sign Up</button>
+            <button id="submitbtn" type="submit">Sign Up</button>
             
             <p>Already have an account? <a href="Login.html">Log in</a></p>
         </div>

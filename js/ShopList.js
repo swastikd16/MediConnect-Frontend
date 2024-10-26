@@ -1,5 +1,3 @@
-localStorage.setItem('email', 'shop@gmail.com');
-
 async function getMedicineList() {
     const data = {
         request_type: 'get_med',

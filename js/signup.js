@@ -35,6 +35,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const userTypeCheckbox = document.getElementById("user-type").checked;
         const type = userTypeCheckbox ? 'shop' : 'user';
         const location = await getLocation();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
 
         // Data to be sent to the backend 
         const data = {
@@ -42,7 +44,9 @@ document.addEventListener('DOMContentLoaded', function () {
             email: email,
             password: password,
             type: type,
-            location: location
+            location: location,
+            name: name,
+            phone: phone,
         };
 
         try {

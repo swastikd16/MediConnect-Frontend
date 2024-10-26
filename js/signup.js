@@ -1,3 +1,24 @@
+function getLocation() {
+    return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+                    resolve({ latitude, longitude });
+                },
+                (error) => {
+                    alert("Error obtaining location");
+                    reject(error);
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser.");
+            reject(new Error("Geolocation is not supported by this browser."));
+        }
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 
     // // Toggle display of owner input based on checkbox
@@ -13,13 +34,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const password = document.getElementById('password').value;
         const userTypeCheckbox = document.getElementById("user-type").checked;
         const type = userTypeCheckbox ? 'shop' : 'user';
+        const location = await getLocation();
 
         // Data to be sent to the backend 
         const data = {
             request_type: 'new_auth',
             email: email,
             password: password,
-            type: type
+            type: type,
+            location: location
         };
 
         try {
@@ -39,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (result.status == true) {
                     alert('Sign-up successful!');
 
-                   
+
                 }
                 else {
                     alert(`Sign-up failed: ${result.message}`);

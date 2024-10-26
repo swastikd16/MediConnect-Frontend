@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    // Toggle display of owner input based on checkbox
-    document.getElementById('user-type').addEventListener('change', function () {
-        const ownerInput = document.getElementById('owner-input');
-        ownerInput.style.display = this.checked ? 'block' : 'none';
-    });
+    // // Toggle display of owner input based on checkbox
+    // document.getElementById('user-type').addEventListener('change', function () {
+    //     const ownerInput = document.getElementById('owner-input');
+    //     ownerInput.style.display = this.checked ? 'block' : 'none';
+    // });
 
     // Functionality for the submit button
     document.getElementById('submitbtn').addEventListener('click', async function () {

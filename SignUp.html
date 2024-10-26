@@ -14,17 +14,19 @@
 <body>
     <div class="signup-container">
         <h1>MediConnect</h1>
-        <form class="signup-form">
-            <input type="text" placeholder="Name" required>
+        <div class="signup-form">
+            
             <input type="email" placeholder="Email" required>
             <input type="password" placeholder="Password" required>
-            <button type="submit">Sign Up</button>
+            <button id="submitbtn">Sign Up</button>
             <div class="user-type-container">
                 <input type="checkbox" id="user-type" name="user-type" value="owner">
                 <label for="user-type">I am an Owner</label>
             </div>
             <p>Already have an account? <a href="#">Log in</a></p>
-        </form>
+        </div>
     </div>
+    <script src="js/signup.js"></script>
 </body>
+
 </html>

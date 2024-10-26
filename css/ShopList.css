@@ -1,6 +1,8 @@
+/* Keep footer at the bottom of the page */
 body {
-    padding: 0;
-    background: linear-gradient(181.2deg, rgb(181, 239, 249) 10.5%, rgb(254, 254, 254) 86.8%);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -70,11 +72,17 @@ nav a:hover {
     height: 400px;
 }
 
-.medicine-list {
+/* .medicine-list {
     max-height: 600px;
     overflow-y: auto;
     padding: 7px;
     list-style: none;
+} */
+
+/* Prevent overflow in the Medicine List and enable scrolling */
+.medicine-list {
+    max-height: 400px; /* Set a fixed height to contain the list */
+    overflow-y: auto;  /* Enable scrolling if content exceeds max height */
 }
 
 .medicine-item {
@@ -163,6 +171,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px;
+    margin-top: auto;
     position: relative; /* Optional: to prevent footer from overlapping content */
 }
 

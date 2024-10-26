@@ -86,7 +86,7 @@ async function addMedicine(m) {
             "price": m[2],  // Stock Price
             "retail_price": m[3], // Retail Price
             "quantity": m[4], // Quantity
-            "units_sold": document.getElementById('units-sold').value // Get Units Sold
+            
         },
     };
 

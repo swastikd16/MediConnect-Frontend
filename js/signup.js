@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     // Toggle display of owner input based on checkbox
-    document.getElementById('user-type').addEventListener('change', function() {
+    document.getElementById('user-type').addEventListener('change', function () {
         const ownerInput = document.getElementById('owner-input');
         ownerInput.style.display = this.checked ? 'block' : 'none';
     });
@@ -38,6 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (response.ok) {
                 if (result.status == true) {
                     alert('Sign-up successful!');
+
+                   
                 }
                 else {
                     alert(`Sign-up failed: ${result.message}`);

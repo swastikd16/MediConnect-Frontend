@@ -2,7 +2,7 @@ body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f8fc;
+    background: linear-gradient(181.2deg, rgb(181, 239, 249) 10.5%, rgb(254, 254, 254) 86.8%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -64,12 +64,13 @@ body {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    font-size: 16px; /* Increased font size for better alignment */
 }
 
-.user-type-container label {
-    margin-left: 10px;
-    font-size: 14px;
-    color: #555;
+.user-type-container input[type="checkbox"] {
+    width: 20px; /* Increased width */
+    height: 20px; /* Increased height */
+    margin-right: 10px; /* Adds space between checkbox and label */
 }
 
 .signup-form p {

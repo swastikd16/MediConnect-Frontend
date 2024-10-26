@@ -1,4 +1,7 @@
-<html><head><base href="https://mediconnect.com/">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- <base href="https://mediconnect.com/"> -->
     <title>MediConnect - Effortless Medicine Stock Tracking</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,235 +9,64 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f5f8fc;
-    }
-    
-    header {
-      background-color: #3498db;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-    
-    header h1 {
-      font-size: 36px;
-      margin-bottom: 10px;
-    }
-    
-    header p {
-      font-size: 18px;
-    }
-    
-    nav {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-    
-    nav a {
-      color: #333;
-      text-decoration: none;
-      padding: 10px 20px;
-      margin: 0 10px;
-      transition: background-color 0.3s, color 0.3s;
-    }
-    
-    nav a:hover {
-      background-color: #3498db;
-      color: white;
-    }
-    
-    main {
-      padding: 40px 20px;
-    }
-    
-    .hero {
-      text-align: center;
-      margin-bottom: 60px;
-    }
-    
-    .hero h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-    
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-    
-    .hero-btn {
-      display: inline-block;
-      background-color: #3498db;
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-size: 16px;
-      transition: background-color 0.3s;
-    }
-    
-    .hero-btn:hover {
-      background-color: #2980b9;
-    }
-    
-    .features {
-      display: flex;
-      justify-content: space-around;
-      margin-bottom: 60px;
-    }
-    
-    .feature {
-      text-align: center;
-      width: 30%;
-    }
-    
-    .feature i {
-      font-size: 48px;
-      color: #3498db;
-      margin-bottom: 20px;
-    }
-    
-    .feature h3 {
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    
-    .feature p {
-      font-size: 16px;
-    }
-    
-    .about {
-      background-color: #fff;
-      padding: 40px;
-      text-align: center;
-      margin-bottom: 60px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .about h2 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-    
-    .about p {
-      font-size: 18px;
-      margin-bottom: 30px;
-    }
-    
-    .contact {
-      background-color: #fff;
-      padding: 40px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-    
-    .contact h2 {
-      font-size: 36px;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    
-    .contact-form {
-      display: flex;
-      flex-direction: column;
-    }
-    
-    .contact-form input,
-    .contact-form textarea {
-      padding: 12px;
-      margin-bottom: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    
-    .contact-form button {
-      background-color: #3498db;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-     
-    .contact-form button:hover {
-      background-color: #2980b9;
-    }
-    
-    footer {
-      background-color: #3498db;
-      color: white;
-      text-align: center;
-      padding: 20px;
-    }
-    
-    footer p {
-      font-size: 14px;
-    }
-    </style>
-    </head>
-    <body>
+    <link rel="stylesheet" href="css/Landing_Page.css"> <!-- Link to external CSS file -->
+</head>
+<body>
     <header>
-      <h1>MediConnect</h1>
-      <p>Effortless Medicine Stock Tracking</p>
+        <h1>MediConnect</h1>
+        <!-- <p>Effortless Medicine Stock Tracking</p> -->
     </header>
-    
+
     <nav>
-      <a href="#">Home</a>
-      <a href="#features">Features</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+        <a href="#">Home</a>
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
     </nav>
-    
+
     <main>
-      <section class="hero">
-        <h2>Effortless Medicine Stock Tracking</h2>
-        <p>MediConnect helps you manage your medicine supplies with ease.</p>
-        <a href="#" class="hero-btn">Get Started</a>
-      </section>
-    
-      <section id="features" class="features">
-        <div class="feature">
-          <i class="fas fa-chart-line"></i>
-          <h3>Real-Time Tracking</h3>
-          <p>Monitor your medicine stocks in real-time and get alerts when supplies are running low.</p>
-        </div>
-        <div class="feature">
-          <i class="fas fa-calendar-alt"></i>
-          <h3>Expiration Management</h3>
-          <p>Never let your medicines expire with our built-in expiration date tracking.</p>
-        </div>
-        <div class="feature">
-          <i class="fas fa-users"></i>
-          <h3>Team Collaboration</h3>
-          <p>Easily share and manage medicine stocks across multiple locations and teams.</p>
-        </div>
-      </section>
-    
-      <section id="about" class="about">
-        <h2>About MediConnect</h2>
-        <p>MediConnect is a leading platform for effortless medicine stock tracking. Our intuitive and user-friendly interface helps healthcare providers, pharmacies, and hospitals stay on top of their medicine supplies with ease.</p>
-      </section>
-    
-      <section id="contact" class="contact">
-        <h2>Contact Us</h2>
-        <form class="contact-form">
-          <input type="text" placeholder="Name" required>
-          <input type="email" placeholder="Email" required>
-          <textarea placeholder="Message" required></textarea>
-          <button type="submit">Send</button>
-        </form>
-      </section>
+        <section class="hero">
+            <h2>Effortless Medicine Stock Tracking</h2>
+            <p>MediConnect helps you manage your medicine supplies with ease.</p>
+            <a href="#" class="hero-btn">Get Started</a>
+        </section>
+
+        <section id="features" class="features">
+            <div class="feature">
+                <i class="fas fa-chart-line"></i>
+                <h3>Real-Time Tracking</h3>
+                <p>Monitor your medicine stocks in real-time and get alerts when supplies are running low.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Expiration Management</h3>
+                <p>Never let your medicines expire with our built-in expiration date tracking.</p>
+            </div>
+            <div class="feature">
+                <i class="fas fa-users"></i>
+                <h3>Team Collaboration</h3>
+                <p>Easily share and manage medicine stocks across multiple locations and teams.</p>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <h2>About MediConnect</h2>
+            <p>MediConnect is a leading platform for effortless medicine stock tracking. Our intuitive and user-friendly interface helps healthcare providers, pharmacies, and hospitals stay on top of their medicine supplies with ease.</p>
+        </section>
+
+        <section id="contact" class="contact">
+            <h2>Contact Us</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
     </main>
-    
+
     <footer>
-      <p>&copy; 2023 MediConnect. All rights reserved.</p>
+        <p>&copy; 2023 MediConnect. All rights reserved.</p>
     </footer>
-    </body></html>
+</body>
+</html>

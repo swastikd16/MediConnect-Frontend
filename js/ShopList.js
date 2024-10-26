@@ -1,3 +1,33 @@
+async function getMedicineList() {
+    const data = {
+        request_type: 'get_med',
+        email: email
+    };
+
+    const response = await fetch('http://127.0.0.1:8000/api/medicine', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log(result);  // Handle response from backend
+
+    if (response.ok) {
+        if (result.status == true) {
+return result.data;
+        }
+        else {
+            alert(`Login failed: ${result.message}`);
+        }
+    } else {
+        alert(`Sign-up failed: ${result.message}`);
+    }
+
+}
+
 let medicineList = [];
 let editIndex = -1;
 

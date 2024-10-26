@@ -81,12 +81,13 @@ async function addMedicine(m) {
         "request_type": "add_med",
         "email": localStorage.getItem('email'),
         "Med_data": {
+            'id': generateRandomNumber(),
             "name": m[0],
             "brand": m[1],
             "price": m[2],  // Stock Price
             "retail_price": m[3], // Retail Price
             "quantity": m[4], // Quantity
-            "units_sold": document.getElementById('units-sold').value // Get Units Sold
+            "units_sold": 0,
         },
     };
 
@@ -120,6 +121,7 @@ document.getElementById('submit-medicine-btn').addEventListener('click', () => {
     const stockPrice = document.getElementById('stock-price').value;
     const retailPrice = document.getElementById('retail-price').value; // Get Retail Price
     const quantity = document.getElementById('quantity').value;
+
 
     const medicineData = [name, brand, stockPrice, retailPrice, quantity];
     addMedicine(medicineData);

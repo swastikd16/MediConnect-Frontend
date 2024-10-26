@@ -3,9 +3,9 @@ function getLocation() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
-                    const latitude = position.coords.latitude;
-                    const longitude = position.coords.longitude;
-                    resolve({ latitude, longitude });
+                    const lat = position.coords.latitude;
+                    const long = position.coords.longitude;
+                    resolve({ lat, long });
                 },
                 (error) => {
                     alert("Error obtaining location");

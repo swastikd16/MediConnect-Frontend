@@ -1,7 +1,9 @@
+localStorage.setItem('email', 'shop@gmail.com');
+
 async function getMedicineList() {
     const data = {
         request_type: 'get_med',
-        email: email
+        email: localStorage.getItem('email'),
     };
 
     const response = await fetch('http://127.0.0.1:8000/api/medicine', {
@@ -17,25 +19,24 @@ async function getMedicineList() {
 
     if (response.ok) {
         if (result.status == true) {
-return result.data;
+            return result.medicine;
         }
         else {
-            alert(`Login failed: ${result.message}`);
+            alert(`Failed to get data: ${result.message}`);
         }
     } else {
-        alert(`Sign-up failed: ${result.message}`);
+        alert(`Failed to get data: ${result.message}`);
     }
 
 }
 
-let medicineList = [];
 let editIndex = -1;
 
 const medicineListElement = document.getElementById('medicine-list');
 const loaderElement = document.getElementById('loader');
 
 // Function to update the medicine list display
-function updateMedicineList() {
+function updateMedicineList(medicineList) {
     medicineListElement.innerHTML = ''; // Clear current list
     medicineList.forEach((medicine, index) => {
         const medicineItem = document.createElement('li');
@@ -44,8 +45,8 @@ function updateMedicineList() {
             <div class="serial-number">${index + 1}</div>
             <div class="name">${medicine.name}</div>
             <div class="brand">${medicine.brand}</div>
-            <div class="price">${medicine.price}</div>
             <div class="quantity">${medicine.quantity}</div>
+            <div class="price">${medicine.price}</div>
             <div class="actions">
                 <i class="fas fa-edit action-icon" onclick="openEditModal(${index})"></i>
                 <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(${index})"></i>
@@ -57,7 +58,14 @@ function updateMedicineList() {
 
 // Assuming you have already populated the medicine list
 document.addEventListener('DOMContentLoaded', () => {
-    const medicineItems = document.querySelectorAll('.medicine-item');
+
+    getMedicineList().then(medicineList => {
+        console.log(medicineList);
+        updateMedicineList(medicineList);
+
+    });
+
+    const medicineItems = document.querySelectorAll('.medicine-item')
 
     medicineItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -67,6 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('clicked');
         });
     });
+
 });
 
 

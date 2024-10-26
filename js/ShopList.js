@@ -54,6 +54,8 @@ function updateMedicineList(medicineList) {
         `;
         medicineListElement.appendChild(medicineItem);
     });
+
+    document.getElementById('loader').style.display = 'none';
 }
 
 // Assuming you have already populated the medicine list

@@ -31,12 +31,13 @@ async function getMedicineList() {
 }
 
 let editIndex = -1;
+let medicineList = [];
 
 const medicineListElement = document.getElementById('medicine-list');
 const loaderElement = document.getElementById('loader');
 
 // Function to update the medicine list display
-function updateMedicineList(medicineList) {
+function updateMedicineList() {
     medicineListElement.innerHTML = ''; // Clear current list
     medicineList.forEach((medicine, index) => {
         const medicineItem = document.createElement('li');
@@ -61,23 +62,12 @@ function updateMedicineList(medicineList) {
 // Assuming you have already populated the medicine list
 document.addEventListener('DOMContentLoaded', () => {
 
-    getMedicineList().then(medicineList => {
+    getMedicineList().then(m => {
+        medicineList = m
         console.log(medicineList);
         updateMedicineList(medicineList);
 
     });
-
-    const medicineItems = document.querySelectorAll('.medicine-item')
-
-    medicineItems.forEach(item => {
-        item.addEventListener('click', () => {
-            // Remove 'clicked' class from all items
-            medicineItems.forEach(i => i.classList.remove('clicked'));
-            // Add 'clicked' class to the currently clicked item
-            item.classList.add('clicked');
-        });
-    });
-
 });
 
 
@@ -89,52 +79,50 @@ document.getElementById('add-medicine-btn').addEventListener('click', () => {
     modal.show();
 });
 
+function generateRandomNumber() {
+    return Math.floor(10000 + Math.random() * 90000);
+}
+
+async function addMedicine(m) {
+    const data = {
+        "request_type": "add_med",
+        "email": localStorage.getItem('email'),
+        "Med_data": {
+            "id": generateRandomNumber(),
+            "name": m[0],
+            "brand": m[1],
+            "price": m[2],
+            "quantity": m[3],
+        },
+    };
+
+    const response = await fetch('http://127.0.0.1:8000/api/medicine', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+};
+
 // Function to submit the medicine form
 document.getElementById('submit-medicine-btn').addEventListener('click', () => {
     const name = document.getElementById('name').value;
     const brand = document.getElementById('brand').value;
-    const price = document.getElementById('price').value;
     const quantity = document.getElementById('quantity').value;
+    const price = document.getElementById('price').value;
 
     if (name && brand && price && quantity) {
-        const newMedicine = { name, brand, price: parseFloat(price), quantity: parseInt(quantity) };
+        const newMedicine = { name, brand, quantity: parseInt(quantity), price: parseFloat(price) };
         medicineList.push(newMedicine);
         updateMedicineList();
-        clearForm();
         const modal = bootstrap.Modal.getInstance(document.getElementById('addMedicineModal'));
         modal.hide();
+
+        addMedicine([name, brand, quantity, price]);
     }
 });
-
-// Function to open edit modal
-function openEditModal(index) {
-    editIndex = index;
-    document.getElementById('edit-quantity').value = medicineList[index].quantity;
-    const modal = new bootstrap.Modal(document.getElementById('editQuantityModal'));
-    modal.show();
-}
-
-// Function to update quantity
-document.getElementById('update-quantity-btn').addEventListener('click', () => {
-    const quantity = parseInt(document.getElementById('edit-quantity').value);
-    if (quantity >= 0) {
-        medicineList[editIndex].quantity = quantity;
-        updateMedicineList();
-        const modal = bootstrap.Modal.getInstance(document.getElementById('editQuantityModal'));
-        modal.hide();
-    }
-});
-
-// Function to delete a medicine
-function deleteMedicine(index) {
-    medicineList.splice(index, 1);
-    updateMedicineList();
-}
-
-// Function to clear the form
-function clearForm() {
-    document.getElementById('name').value = '';
-    document.getElementById('brand').value = '';
-    document.getElementById('price').value = '';
-    document.getElementById('quantity').value = '';
-}

@@ -32,9 +32,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 alert('Login successful!');
                 localStorage.setItem('email', email);
 
-                // Redirect to profile page
-                
-                window.location.href = 'ShopList.html';
+                // Get account type
+
+                const data = {
+                    request_type: 'check_account_type',
+                    email: email,
+
+                };
+
+                // Sending POST request to backend
+                const response = await fetch('http://127.0.0.1:8000/api/auth', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+                if (result.type == 'shop') {
+
+                    window.location.href = 'ShopList.html';
+                }
+                else {
+                    window.location.href = 'UserSearch.html';
+                }
             }
             else {
                 alert(`Login failed: ${result.message}`);

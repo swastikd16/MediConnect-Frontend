@@ -1,0 +1,64 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f9fc;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.confirmation-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.confirmation-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+.confirmation-icon {
+    font-size: 80px;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+.confirmation-title {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: #023047;
+}
+
+.confirmation-text {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.medicine-details {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 16px;
+    text-align: left;
+}
+
+.return-home-btn {
+    background-color: #3498db;
+    color: white;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.return-home-btn:hover {
+    background-color: #2874a6;
+}

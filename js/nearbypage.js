@@ -37,40 +37,62 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     let pos = 0
 
-    shopList.forEach((shop) => {
-        pos++
+    shopList.forEach((shop, index) => {
+        // Increment position
+        pos++;
 
         // Add a marker to the map
-        const marker = L.marker([shop.shop_location.lat, shop.shop_location.long]).addTo(map)
+        const marker = L.marker([shop.shop_location.lat, shop.shop_location.long]).addTo(map);
         marker.bindPopup(`<b>${shop.shop_name}</b><br>Distance: ${shop.distance} km`).openPopup();
 
         marker.on('click', function () {
-            map.flyTo(marker.getLatLng(), 15, { animate: true, duration: 1 }); // Fly to the marker position with a specific zoom level and duration
-            marker.openPopup(); // Open the popup (optional)
+            map.flyTo(marker.getLatLng(), 15, { animate: true, duration: 1 });
+            marker.openPopup();
         });
 
         // Add data to the table
+        const tableBody = document.getElementById('shop-body');
+        const newRow = tableBody.insertRow();
 
-        document.getElementById('shop-body').innerHTML += `<tr>
-                        <td>${shop.shop_name}</td>
-                        <td>${shop.distance} km</td>
-                        <td>${shop.price}</td>
-                        <td class="actions">
-                            <a id="viewmap${pos}" title="View on Map"><i class="fas fa-eye"></i></a>
-                            <a id="buymed${pos}" title="Buy Now"><i class="fas fa-shopping-cart"></i></a>
-                        </td>
-                    </tr>`
+        // Shop name
+        const nameCell = newRow.insertCell(0);
+        nameCell.textContent = shop.shop_name;
 
-        document.getElementById(`viewmap${pos}`).addEventListener('click', function () {
-            map.flyTo(marker.getLatLng(), 15, { animate: true, duration: 1 }); // Fly to the marker position with a specific zoom level and duration
-            marker.openPopup(); // Open the popup (optional)
-        })
+        // Distance
+        const distanceCell = newRow.insertCell(1);
+        distanceCell.textContent = `${shop.distance} km`;
 
-        document.getElementById(`buymed${pos}`).addEventListener('click', function () {
-            console.log('Buy Now')
-        })
+        // Price
+        const priceCell = newRow.insertCell(2);
+        priceCell.textContent = shop.price;
 
+        // Actions with View on Map and Buy Now buttons
+        const actionsCell = newRow.insertCell(3);
+        actionsCell.className = 'actions';
+
+        const viewLink = document.createElement('a');
+        viewLink.id = `viewmap${pos}`;
+        viewLink.title = "View on Map";
+        viewLink.innerHTML = '<i class="fas fa-eye"></i>';
+        actionsCell.appendChild(viewLink);
+
+        const buyLink = document.createElement('a');
+        buyLink.id = `buymed${pos}`;
+        buyLink.title = "Buy Now";
+        buyLink.innerHTML = '<i class="fas fa-shopping-cart"></i>';
+        actionsCell.appendChild(buyLink);
+
+        // Event listeners
+        viewLink.addEventListener('click', function () {
+            map.flyTo(marker.getLatLng(), 15, { animate: true, duration: 1 });
+            marker.openPopup();
+        });
+
+        buyLink.addEventListener('click', function () {
+            console.log('Buy Now');
+        });
     });
+
 
     var redMarker = L.AwesomeMarkers.icon({
         icon: 'home',

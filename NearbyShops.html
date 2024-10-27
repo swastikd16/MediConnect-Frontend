@@ -107,6 +107,64 @@
         footer p {
             font-size: 14px;
         }
+
+        /* Popup Overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+        }
+
+        /* Popup Content */
+        .popup-content {
+            background-color: #fff;
+            width: 300px;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .popup-content h2 {
+            margin-bottom: 10px;
+        }
+
+        .popup-content input {
+            width: 100px;
+            padding: 5px;
+            margin: 10px 0;
+        }
+
+        .popup-content button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .popup-content button:hover {
+            background-color: #2980b9;
+        }
+
+        #closePopup {
+            background-color: #e74c3c;
+            margin-left: 10px;
+        }
+
+        #closePopup:hover {
+            background-color: #c0392b;
+        }
+
     </style>
 </head>
 
@@ -164,6 +222,18 @@
     <footer>
         <p>&copy; 2023 MediConnect. All rights reserved.</p>
     </footer>
+
+    <!-- Buy Medicine Popup -->
+<div id="buyPopup" class="popup-overlay">
+    <div class="popup-content">
+        <h2>Buy Medicine</h2>
+        <label for="quantity">Choose Quantity:</label>
+        <input type="number" id="quantity" min="1" value="1">
+        <button id="confirmPurchase">Buy Now</button>
+        <button id="closePopup">Cancel</button>
+    </div>
+</div>
+
 
     <script src="js/nearbypage.js"></script>
 </body>

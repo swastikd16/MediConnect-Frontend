@@ -1,4 +1,23 @@
-
+function getLocation() {
+    return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const long = position.coords.longitude;
+                    resolve({ lat, long });
+                },
+                (error) => {
+                    alert("Error obtaining location");
+                    reject(error);
+                }
+            );
+        } else {
+            alert("Geolocation is not supported by this browser.");
+            reject(new Error("Geolocation is not supported by this browser."));
+        }
+    });
+}
 
 async function getShops() {
     const searchParams = new URLSearchParams(window.location.search);
@@ -27,6 +46,31 @@ async function getShops() {
     console.log(result);
     return result.shops;
 }
+
+// JavaScript for Buy Popup
+const buyIcons = document.querySelectorAll('.buy-icon');
+const buyPopup = document.getElementById('buyPopup');
+const closePopup = document.getElementById('closePopup');
+
+// Show the popup when a buy icon is clicked
+buyIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+        buyPopup.style.display = 'block';
+    });
+});
+
+// Hide the popup when the cancel button is clicked
+closePopup.addEventListener('click', () => {
+    buyPopup.style.display = 'none';
+});
+
+// Confirm purchase (you can add more functionality here)
+document.getElementById('confirmPurchase').addEventListener('click', () => {
+    const quantity = document.getElementById('quantity').value;
+    alert(`You have bought ${quantity} medicines`);
+    buyPopup.style.display = 'none';
+});
+
 
 document.addEventListener('DOMContentLoaded', async function () {
     const shopList = await getShops();

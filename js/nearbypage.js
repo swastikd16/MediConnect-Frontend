@@ -98,6 +98,10 @@ document.getElementById('confirmPurchase').addEventListener('click', () => {
     buyPopup.style.display = 'none';
 });
 
+document.getElementById("confirmDetails").onclick = function() {
+    window.location.href = "confirmation.html"; // Replace with your new webpage URL
+};
+
 
 document.addEventListener('DOMContentLoaded', async function () {
     const shopList = await getShops();

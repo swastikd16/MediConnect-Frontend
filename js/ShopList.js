@@ -49,7 +49,7 @@ function updateMedicineList() {
             <div class="units-sold">${medicine.units_sold}</div> <!-- Units Sold -->
             <div class="actions">
                 <i class="fas fa-edit action-icon" onclick="openEditModal(${index})"></i>
-                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(${medicine.id})"></i>
+                <i class="fas fa-trash-alt action-icon"" onclick="deleteMedicine(${medicine.id})"></i>
             </div>
         `;
         medicineListElement.appendChild(medicineItem);
@@ -134,3 +134,28 @@ document.getElementById('submit-medicine-btn').addEventListener('click', () => {
     const modal = bootstrap.Modal.getInstance(document.getElementById('addMedicineModal'));
     modal.hide();
 });
+
+async function deleteMedicine(id) {
+    const data = {
+        request_type: 'delete_med',
+        email: localStorage.getItem('email'),
+        'id': id,
+    };
+
+    const response = await fetch('http://127.0.0.1:8000/api/medicine', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    if (result.status == true) {
+        medicineList = medicineList.filter(medicine => medicine.id != id);
+        updateMedicineList();
+        alert('Medicine deleted successfully');
+    } else {
+        alert(`Failed to delete medicine: ${result.message}`);
+    }
+}

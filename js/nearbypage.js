@@ -21,6 +21,10 @@ function getLocation() {
 
 let currentMedID = 0;
 let shop_email = "";
+let frequency = ''
+let sideeffect = ''
+let precaution = ''
+
 
 // JavaScript for handling popups
 const purchaseDetailsPopup = document.getElementById('purchaseDetailsPopup');
@@ -46,6 +50,7 @@ async function getShops() {
     const medicine_name = searchParams.get('medicine_name');
 
     document.getElementById('med-name').innerHTML = `Medicine Name: ${medicine_name}`;
+    document.getElementById('medicineName').innerHTML = medicine_name
 
     const location = await getLocation();
     const data = {
@@ -114,11 +119,12 @@ document.getElementById('confirmPurchase').addEventListener('click', async () =>
 
     if (result.status === true) {
         alert(`You have booked ${quantity} medicines`);
-        buyPopup.style.display = 'none';
 
-        document.getElementById('medicineName').textContent = document.getElementById('med-name').textContent.split(": ")[1];
-        document.getElementById('quantityBought').textContent = quantity;
+        document.getElementById('quantityBought').innerHTML = quantity;
         buyPopup.style.display = 'none';
+        document.getElementById('Frequency').innerHTML = frequency
+        document.getElementById('sideEffects').innerHTML = sideeffect
+        document.getElementById('precautions').innerHTML = precaution
         purchaseDetailsPopup.style.display = 'block';
     }
 
@@ -197,6 +203,9 @@ document.addEventListener('DOMContentLoaded', async function () {
             buyPopup.style.display = 'block';
             currentMedID = shop.id;
             shop_email = shop.shop_email;
+            frequency = shop.frequency
+            sideeffect = shop.sideeffect
+            precaution = shop.precaution
         });
     });
 

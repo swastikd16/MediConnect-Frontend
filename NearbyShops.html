@@ -165,6 +165,16 @@
             background-color: #c0392b;
         }
 
+                /* Additional Popup for Purchase Details */
+                        #purchaseDetailsPopup .popup-content {
+                            width: auto; /* Allows width to adapt to content */
+                            max-width: 60%; /* Optional: Limit maximum width to 60% of the screen */
+            padding: 20px; /* Adds 20px left padding */
+            text-align: left; /* Aligns text to the left */
+        }
+
+
+
     </style>
 </head>
 
@@ -176,8 +186,8 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="AboutUs.html">About Us</a>
-        <a href="https://mediconnect.com/UserSearch">Medicine Search</a>
-        <a href="https://mediconnect.com/contact">Contact</a>
+        <a href="UserSearch.html">Medicine Search</a>
+        <a href="#">Contact</a>
     </nav>
 
     <main>
@@ -233,6 +243,27 @@
         <button id="closePopup">Cancel</button>
     </div>
 </div>
+
+<!-- Purchase Details Popup -->
+<div id="purchaseDetailsPopup" class="popup-overlay">
+    <div class="popup-content">
+        <h2>Purchase Details</h2>
+        <p><strong>User Name:</strong> <span id="userName">John Doe</span></p>
+        <p><strong>Medicine Name:</strong> <span id="medicineName"></span></p>
+        <p><strong>Quantity:</strong> <span id="quantityBought"></span></p>
+        
+        <p><strong>Frequency:</strong></p>
+        <!-- <input type="text" id="frequency" placeholder="E.g., Twice a day" style="width: 100%; padding: 5px;"> -->
+
+        
+        <p><strong>Side Effects:</strong> <span id="sideEffects">May cause drowsiness, dizziness.</span></p>
+        <p><strong>Precautions:</strong> <span id="precautions">Avoid alcohol, consult if pregnant.</span></p>
+        
+        <button id="confirmDetails">Confirm Purchase</button>
+        <button id="closeDetailsPopup">Close</button>
+    </div>
+</div>
+
 
 
     <script src="js/nearbypage.js"></script>

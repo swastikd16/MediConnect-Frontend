@@ -19,6 +19,33 @@ function getLocation() {
     });
 }
 
+// JavaScript for handling popups
+const purchaseDetailsPopup = document.getElementById('purchaseDetailsPopup');
+const closeDetailsPopup = document.getElementById('closeDetailsPopup');
+const confirmPurchaseBtn = document.getElementById('confirmPurchase');
+
+// Show the purchase details popup after clicking "Buy Now"
+confirmPurchaseBtn.addEventListener('click', () => {
+    const quantity = document.getElementById('quantity').value;
+    document.getElementById('medicineName').textContent = document.getElementById('med-name').textContent.split(": ")[1];
+    document.getElementById('quantityBought').textContent = quantity;
+    buyPopup.style.display = 'none';
+    purchaseDetailsPopup.style.display = 'block';
+});
+
+// Hide the purchase details popup when clicking close
+closeDetailsPopup.addEventListener('click', () => {
+    purchaseDetailsPopup.style.display = 'none';
+});
+
+// Confirm Purchase Details
+document.getElementById('confirmDetails').addEventListener('click', () => {
+    const frequency = document.getElementById('frequency').value;
+    alert(`Purchase confirmed for ${document.getElementById('medicineName').textContent}.\nQuantity: ${document.getElementById('quantityBought').textContent}\nFrequency: ${frequency}`);
+    purchaseDetailsPopup.style.display = 'none';
+});
+
+
 async function getShops() {
     const searchParams = new URLSearchParams(window.location.search);
     const medicine_name = searchParams.get('medicine_name');
@@ -52,12 +79,12 @@ const buyIcons = document.querySelectorAll('.buy-icon');
 const buyPopup = document.getElementById('buyPopup');
 const closePopup = document.getElementById('closePopup');
 
-// Show the popup when a buy icon is clicked
-buyIcons.forEach(icon => {
-    icon.addEventListener('click', () => {
-        buyPopup.style.display = 'block';
-    });
-});
+// // Show the popup when a buy icon is clicked
+// buyIcons.forEach(icon => {
+//     icon.addEventListener('click', () => {
+//         buyPopup.style.display = 'block';
+//     });
+// });
 
 // Hide the popup when the cancel button is clicked
 closePopup.addEventListener('click', () => {
@@ -67,7 +94,7 @@ closePopup.addEventListener('click', () => {
 // Confirm purchase (you can add more functionality here)
 document.getElementById('confirmPurchase').addEventListener('click', () => {
     const quantity = document.getElementById('quantity').value;
-    alert(`You have bought ${quantity} medicines`);
+    alert(`You have booked ${quantity} medicines`);
     buyPopup.style.display = 'none';
 });
 
@@ -136,6 +163,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         buyLink.addEventListener('click', function () {
             console.log('Buy Now');
+
+            buyPopup.style.display = 'block';
         });
     });
 

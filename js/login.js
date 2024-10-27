@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 localStorage.setItem('email', email);
 
                 // Redirect to profile page
+                
                 window.location.href = 'ShopList.html';
             }
             else {

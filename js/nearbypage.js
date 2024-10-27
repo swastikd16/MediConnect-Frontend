@@ -4,6 +4,8 @@ async function getShops() {
     const searchParams = new URLSearchParams(window.location.search);
     const medicine_name = searchParams.get('medicine_name');
 
+    document.getElementById('med-name').innerHTML = `Medicine Name: ${medicine_name}`;
+
     const location = await getLocation();
     const data = {
         request_type: 'get_shops',

@@ -1,4 +1,5 @@
 async function getMedicineList() {
+
     const data = {
         request_type: 'get_med',
         email: localStorage.getItem('email'),
@@ -48,7 +49,7 @@ function updateMedicineList() {
             <div class="units-sold">${medicine.units_sold}</div> <!-- Units Sold -->
             <div class="actions">
                 <i class="fas fa-edit action-icon" onclick="openEditModal(${index})"></i>
-                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(${index})"></i>
+                <i class="fas fa-trash-alt action-icon" onclick="deleteMedicine(${medicine.id})"></i>
             </div>
         `;
         medicineListElement.appendChild(medicineItem);

@@ -19,19 +19,14 @@ function getLocation() {
     });
 }
 
+let currentMedID = 0;
+let shop_email = "";
+
 // JavaScript for handling popups
 const purchaseDetailsPopup = document.getElementById('purchaseDetailsPopup');
 const closeDetailsPopup = document.getElementById('closeDetailsPopup');
 const confirmPurchaseBtn = document.getElementById('confirmPurchase');
 
-// Show the purchase details popup after clicking "Buy Now"
-confirmPurchaseBtn.addEventListener('click', () => {
-    const quantity = document.getElementById('quantity').value;
-    document.getElementById('medicineName').textContent = document.getElementById('med-name').textContent.split(": ")[1];
-    document.getElementById('quantityBought').textContent = quantity;
-    buyPopup.style.display = 'none';
-    purchaseDetailsPopup.style.display = 'block';
-});
 
 // Hide the purchase details popup when clicking close
 closeDetailsPopup.addEventListener('click', () => {
@@ -92,13 +87,44 @@ closePopup.addEventListener('click', () => {
 });
 
 // Confirm purchase (you can add more functionality here)
-document.getElementById('confirmPurchase').addEventListener('click', () => {
+document.getElementById('confirmPurchase').addEventListener('click', async () => {
     const quantity = document.getElementById('quantity').value;
-    alert(`You have booked ${quantity} medicines`);
-    buyPopup.style.display = 'none';
+
+
+    const data = {
+        request_type: 'buy_med',
+        sold_quantity: quantity,
+        medicine_id: currentMedID,
+        email: shop_email
+
+    };
+    console.log(data);
+
+    // Sending POST request to backend
+    const response = await fetch('http://127.0.0.1:8000/api/buy', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+    console.log(result);
+
+    if (result.status === true) {
+        alert(`You have booked ${quantity} medicines`);
+        buyPopup.style.display = 'none';
+
+        document.getElementById('medicineName').textContent = document.getElementById('med-name').textContent.split(": ")[1];
+        document.getElementById('quantityBought').textContent = quantity;
+        buyPopup.style.display = 'none';
+        purchaseDetailsPopup.style.display = 'block';
+    }
+
 });
 
-document.getElementById("confirmDetails").onclick = function() {
+document.getElementById("confirmDetails").onclick = function () {
     window.location.href = "confirmation.html"; // Replace with your new webpage URL
 };
 
@@ -169,6 +195,8 @@ document.addEventListener('DOMContentLoaded', async function () {
             console.log('Buy Now');
 
             buyPopup.style.display = 'block';
+            currentMedID = shop.id;
+            shop_email = shop.shop_email;
         });
     });
 

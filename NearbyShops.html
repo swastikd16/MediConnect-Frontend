@@ -165,16 +165,17 @@
             background-color: #c0392b;
         }
 
-                /* Additional Popup for Purchase Details */
-                        #purchaseDetailsPopup .popup-content {
-                            width: auto; /* Allows width to adapt to content */
-                            max-width: 60%; /* Optional: Limit maximum width to 60% of the screen */
-            padding: 20px; /* Adds 20px left padding */
-            text-align: left; /* Aligns text to the left */
+        /* Additional Popup for Purchase Details */
+        #purchaseDetailsPopup .popup-content {
+            width: auto;
+            /* Allows width to adapt to content */
+            max-width: 60%;
+            /* Optional: Limit maximum width to 60% of the screen */
+            padding: 20px;
+            /* Adds 20px left padding */
+            text-align: left;
+            /* Aligns text to the left */
         }
-
-
-
     </style>
 </head>
 
@@ -230,39 +231,39 @@
     </main>
 
     <footer>
-        <p>&copy; 2023 MediConnect. All rights reserved.</p>
+        <p>&copy; 2024 MediConnect. All rights reserved.</p>
     </footer>
 
     <!-- Buy Medicine Popup -->
-<div id="buyPopup" class="popup-overlay">
-    <div class="popup-content">
-        <h2>Buy Medicine</h2>
-        <label for="quantity">Choose Quantity:</label>
-        <input type="number" id="quantity" min="1" value="1">
-        <button id="confirmPurchase">Buy Now</button>
-        <button id="closePopup">Cancel</button>
+    <div id="buyPopup" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Buy Medicine</h2>
+            <label for="quantity">Choose Quantity:</label>
+            <input type="number" id="quantity" min="1" value="1">
+            <button id="confirmPurchase">Buy Now</button>
+            <button id="closePopup">Cancel</button>
+        </div>
     </div>
-</div>
 
-<!-- Purchase Details Popup -->
-<div id="purchaseDetailsPopup" class="popup-overlay">
-    <div class="popup-content">
-        <h2>Purchase Details</h2>
-        <p><strong>User Name:</strong> <span id="userName">John Doe</span></p>
-        <p><strong>Medicine Name:</strong> <span id="medicineName"></span></p>
-        <p><strong>Quantity:</strong> <span id="quantityBought"></span></p>
-        
-        <p><strong>Frequency:</strong></p>
-        <!-- <input type="text" id="frequency" placeholder="E.g., Twice a day" style="width: 100%; padding: 5px;"> -->
+    <!-- Purchase Details Popup -->
+    <div id="purchaseDetailsPopup" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Purchase Details</h2>
+            <p><strong>User Name:</strong> <span id="userName">John Doe</span></p>
+            <p><strong>Medicine Name:</strong> <span id="medicineName"></span></p>
+            <p><strong>Quantity:</strong> <span id="quantityBought"></span></p>
 
-        
-        <p><strong>Side Effects:</strong> <span id="sideEffects">May cause drowsiness, dizziness.</span></p>
-        <p><strong>Precautions:</strong> <span id="precautions">Avoid alcohol, consult if pregnant.</span></p>
-        
-        <button id="confirmDetails">Confirm Purchase</button>
-        <button id="closeDetailsPopup">Close</button>
+            <p><strong>Frequency:</strong></p>
+            <!-- <input type="text" id="frequency" placeholder="E.g., Twice a day" style="width: 100%; padding: 5px;"> -->
+
+
+            <p><strong>Side Effects:</strong> <span id="sideEffects">May cause drowsiness, dizziness.</span></p>
+            <p><strong>Precautions:</strong> <span id="precautions">Avoid alcohol, consult if pregnant.</span></p>
+
+            <button id="confirmDetails">Confirm Purchase</button>
+            <button id="closeDetailsPopup">Close</button>
+        </div>
     </div>
-</div>
 
 
 

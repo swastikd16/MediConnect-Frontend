@@ -1,7 +1,12 @@
 // Mock data for booked medicines - ideally this would come from the previous page or backend.
+
+const searchParams = new URLSearchParams(window.location.search);
+const name = searchParams.get('name');
+const quantity = searchParams.get('quantity');
+const price = searchParams.get('price');
+
 const bookedMedicines = [
-    { name: "Paracetamol", brand: "MediCorp", quantity: 2, price: "₹50" },
-    { name: "Ibuprofen", brand: "HealthPlus", quantity: 1, price: "₹70" }
+    { name: name, quantity: quantity, price: quantity * price },
 ];
 
 function displayMedicineDetails() {
@@ -11,7 +16,6 @@ function displayMedicineDetails() {
     bookedMedicines.forEach(medicine => {
         detailsHTML += `
             <li><strong>Name:</strong> ${medicine.name} <br>
-            <strong>Brand:</strong> ${medicine.brand} <br>
             <strong>Quantity:</strong> ${medicine.quantity} <br>
             <strong>Price:</strong> ${medicine.price}</li><hr>
         `;

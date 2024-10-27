@@ -24,6 +24,9 @@ let shop_email = "";
 let frequency = ''
 let sideeffect = ''
 let precaution = ''
+let medicine_name = ''
+let quantity = 0
+let price = 0
 
 
 // JavaScript for handling popups
@@ -37,17 +40,10 @@ closeDetailsPopup.addEventListener('click', () => {
     purchaseDetailsPopup.style.display = 'none';
 });
 
-// Confirm Purchase Details
-document.getElementById('confirmDetails').addEventListener('click', () => {
-    const frequency = document.getElementById('frequency').value;
-    alert(`Purchase confirmed for ${document.getElementById('medicineName').textContent}.\nQuantity: ${document.getElementById('quantityBought').textContent}\nFrequency: ${frequency}`);
-    purchaseDetailsPopup.style.display = 'none';
-});
-
 
 async function getShops() {
     const searchParams = new URLSearchParams(window.location.search);
-    const medicine_name = searchParams.get('medicine_name');
+    medicine_name = searchParams.get('medicine_name');
 
     document.getElementById('med-name').innerHTML = `Medicine Name: ${medicine_name}`;
     document.getElementById('medicineName').innerHTML = medicine_name
@@ -93,7 +89,7 @@ closePopup.addEventListener('click', () => {
 
 // Confirm purchase (you can add more functionality here)
 document.getElementById('confirmPurchase').addEventListener('click', async () => {
-    const quantity = document.getElementById('quantity').value;
+    quantity = document.getElementById('quantity').value;
 
 
     const data = {
@@ -131,7 +127,7 @@ document.getElementById('confirmPurchase').addEventListener('click', async () =>
 });
 
 document.getElementById("confirmDetails").onclick = function () {
-    window.location.href = "confirmation.html"; // Replace with your new webpage URL
+    window.location.href = `confirmation.html?name=${medicine_name}&quantity=${quantity}&price=${price}`; // Replace with your new webpage URL
 };
 
 
@@ -206,6 +202,7 @@ document.addEventListener('DOMContentLoaded', async function () {
             frequency = shop.frequency
             sideeffect = shop.sideeffect
             precaution = shop.precaution
+            price = shop.price
         });
     });
 

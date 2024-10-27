@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediConnect - Medicine Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            padding-bottom: 80px;
+        }
+        header {
+            text-align: center;
+            padding: 40px;
+            background-color: #005f73;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            border-bottom: 5px solid #94d2bd;
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        .slogan {
+            color: #94d2bd;
+            font-size: 1.5rem;
+            margin-top: 10px;
+            font-weight: 300;
+            animation: fadeIn 1s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+        .container {
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 0.8s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+            animation-delay: 0.3s;
+        }
+        .planner-title {
+            font-size: 2.5rem;
+            color: #0a090b;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            letter-spacing: 0.5px;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: fadeUp 1s ease-out forwards;
+            animation-delay: 0.4s;
+        }
+        table {
+            width: 90%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: scale(0.98);
+            animation: fadeUp 1.2s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+        th, td {
+            padding: 20px;
+            text-align: left;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 1px solid #005f73;
+        }
+        th {
+            background-color: #0a9396;
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        tr:nth-child(even) {
+            background-color: #e9d8a6;
+        }
+        tr:hover {
+            background-color: #94d2bd;
+            color: #005f73;
+            transform: scale(1.02);
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #f8f9fa;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 -3px 8px rgba(0, 0, 0, 0.1);
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #6c757d;
+        }
+    
+        /* Keyframes for fade-in and fade-up animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    
+    
+</head>
+<body>
+    <header>
+        <h1>MediConnect</h1>
+        <h2 class="slogan">Effortless Medicine Stock Tracking</h2>
+    </header>
+
+    <div class="container">
+        <div class="planner-title">Your Medicine Planner</div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Medicine Name</th>
+                    <th>Dosage</th>
+                    <th>Time (Frequency)</th>
+                    <th>Days</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Paracetamol</td>
+                    <td>500 mg</td>
+                    <td>Every 6 hours</td>
+                    <td>Monday, Wednesday, Friday</td>
+                </tr>
+                <tr>
+                    <td>Amoxicillin</td>
+                    <td>250 mg</td>
+                    <td>Every 8 hours</td>
+                    <td>Tuesday, Thursday</td>
+                </tr>
+                <tr>
+                    <td>Cetirizine</td>
+                    <td>10 mg</td>
+                    <td>Once daily</td>
+                    <td>Everyday</td>
+                </tr>
+                <tr>
+                    <td>Ibuprofen</td>
+                    <td>400 mg</td>
+                    <td>Every 6 hours</td>
+                    <td>Saturday, Sunday</td>
+                </tr>
+                <tr>
+                    <td>Metformin</td>
+                    <td>500 mg</td>
+                    <td>Twice daily</td>
+                    <td>Everyday</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        <p>© 2024 MediConnect. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
